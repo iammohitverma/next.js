@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/style.css" rel="stylesheet">
+    <link href="./assets/prism/prism.css" rel="stylesheet">
+    <link href="./assets/line-number/line-number.css" rel="stylesheet">
+    <script src="./assets/prism/prism.js"></script>
+    <script src="./assets/line-number/line-number.js"></script>
+    <link rel="icon" href="https://reactjs.org/favicon.ico">
+    <title>Next js Snippets </title>
+</head>
+
+<body>
+
+    <div class="container-fluid wordpressFunctionAP">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 right">
+                    <ul>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Basic in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">//Index js is main file which render all components
+const index = () => {
+    return(
+        &lt;>
+        &lt;h1>Hello Index&lt;/h1>
+        &lt;/>
+    )
+}
+
+export default index;
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Dynamic File Routing
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">//if we need 100 blog posts then we don't neet to create
+//files as we discussed above we can create dynamic route in next js
+//we have to use special file naming convention that is to use [] (square brackets)
+
+//Defining routes by using predefined paths is not always enough for complex applications.
+// In Next.js you can add brackets to a page ([param]) to create a dynamic route
+// (a.k.a. url slugs, pretty urls, and others).Consider the following page pages/post/[pid].js:
+
+import { useRouter } from 'next/router'
+
+const Post = () => {
+  const router = useRouter()
+  const { pid } = router.query
+
+  return <p>Post: {pid}</p>
+}
+
+export default Post
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Navigation in Next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">import Link from 'next/link'
+    const index = () => {
+        return(
+        &lt;>
+            &lt;nav>
+                &lt;ul>
+                    &lt;li>
+                        &lt;Link href="/">
+                            &lt;a>Home&lt;/a>
+                        &lt;/Link>
+                    &lt;/li>
+                    &lt;li>
+                        &lt;Link href="/about">
+                            &lt;a>About&lt;/a>
+                        &lt;/Link>
+                    &lt;/li>
+                    &lt;li>
+                        &lt;Link href="/services">
+                            &lt;a>Services&lt;/a>
+                        &lt;/Link>
+                    &lt;/li>
+                    &lt;li>
+                        &lt;Link href="/contact">
+                            &lt;a>Contact&lt;/a>
+                        &lt;/Link>
+                    &lt;/li>
+                &lt;/ul>
+            &lt;/nav>
+        &lt;/>
+        )
+    }
+
+export default index;
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Internal css using style jsx in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">&lt;div className="container">
+    &lt;h1>Hello Next.js&lt;/h1>
+    &lt;p>Let's explore different ways to style Next.js apps&lt;/p>
+    &lt;style jsx>{`
+        .container {
+            margin: 50px;
+        }
+        p {
+            color: blue;
+        }
+    `}&lt;/style>
+&lt;/div>
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Image in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">//Put images in public folder then add 
+//first import Image component as below:
+//import Image from 'next/image'; 
+&lt;Image src="/img1.jpg" width="100" height="100"/>
+
+//External way to use image supposed from unsplash.com
+&lt;Image src="https://images.unsplash.com/photo-1647694420044-6e42df6ca610?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" width="100" height="100"/>
+
+//first we need to add images domains as below in config.js file then restart our app
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,  
+  images: {
+    domains: ['images.unsplash.com'],
+  },
+}
+
+module.exports = nextConfig
+
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Head tag in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">//import Head from 'next/head';
+&lt;Head>
+    &lt;title>My Services page title&lt;/title>
+    &lt;meta name="viewport" content="initial-scale=1.0, width=device-width" />
+&lt;/Head>
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Fetch data from Api in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">//Use any fake placeholder api for testing
+//https://jsonplaceholder.typicode.com/todos/
+
+// posts will be populated at build time by getStaticProps()
+function Blog({ posts }) {
+  return (
+    &lt;ul>
+      {posts.map((post) => (
+        &lt;li>{post.title}&lt;/li>
+      ))}
+    &lt;/ul>
+  )
+}
+
+// This function gets called at build time on server-side.
+// It won't be called on client-side, so you can even do
+// direct database queries.
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const res = await fetch('https://.../posts')
+  const posts = await res.json()
+
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      posts,
+    },
+  }
+}
+
+export default Blog
+
+
+
+//Limit items in map method below
+&lt;ul>
+    {posts.slice(0, 5).map((post, id) => (  
+        &lt;li key={id}>{post.title}&lt;/li>
+    ))}
+&lt;/ul>
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Blog Post Listing page in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">//For Listing page
+import Link from 'next/link';
+import styles from '../../styles/blog.module.css';
+
+export async function getStaticProps() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos/')
+  const posts = await res.json()
+  return {
+    props: {
+      posts,
+    },
+  }
+}
+
+
+
+const index = ({posts}) => {
+  return(
+    &lt;>     
+    
+      &lt;ul className={styles.articles}>
+        {posts.slice(0, 5).map((post, id) => (
+          &lt;li key={id}>
+            &lt;Link href={`/blog/${id}`}>
+              &lt;a>{post.title}&lt;/a>
+            &lt;/Link>
+          &lt;/li>
+        ))}
+      &lt;/ul>
+      
+    &lt;/>
+  )
+}
+
+export default index;
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Single Post page in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">export async function getStaticPaths() {
+    const res = await fetch('https://jsonplaceholder.typicode.com/todos/');
+    const posts = await res.json();
+
+    const paths = posts.map((currElem) => {
+        return {
+            params:{
+                pid: currElem.id.toString()
+            },
+        };
+    });
+
+    return {
+     paths, 
+     fallback: false,
+    }
+}
+  
+
+export async function getStaticProps(context) {
+    const id = context.params.pid;
+    const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
+    const post = await res.json()
+    return {
+      props: {
+        post,
+      },
+    }
+  }
+
+const Post = ({post}) => {
+  return(
+    &lt;>
+        &lt;p>Post: {post.id}&lt;/p>
+        &lt;p>Post: {post.title}&lt;/p>
+    &lt;/>
+  )
+}
+
+export default Post
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 right">
+                    <ul>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Pages in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">//Example: If you create pages/about.js that exports a React component 
+//like below, it will be accessible at /about.
+//about.js file in pages folder
+function About() {
+    return &lt;div>About&lt;/div>
+}
+    
+export default About
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Nested File Based Routing
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">//Create folder inside pages folder supposed 
+//blog folder pages>blog>blog-1.js
+//now you can access this route using /blog/blog-1
+//for main blog page you need to add index.js file in blog folder
+//then you can access this route using /blog/
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    404 error page in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">//Create file inside pages folder with name
+//404.js
+import Link from "next/link";
+const errorPage = () => {
+    return(
+        &lt;>
+            &lt;h1>404 errorPage&lt;/h1>
+            &lt;Link href="/">
+                &lt;a>Back to Home&lt;/a>
+            &lt;/Link>
+        &lt;/>
+    )
+}
+export default errorPage;
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    onClick to redirect to home in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">import { useRouter } from 'next/router';
+
+const errorPage = () => {
+    const router = useRouter();
+    return(
+        &lt;>
+            &lt;h1>404 errorPage&lt;/h1>
+            &lt;a onClick={()=>router.push("/")}>Back to Home&lt;/a>
+        &lt;/>
+    )
+}
+export default errorPage;
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Redirect to home page from 404 after 3 seconds in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+const errorPage = () => {
+
+    useEffect(() => {
+        setTimeout(() => {
+            router.push("/");
+        }, 3000);
+    }, []);
+
+    const router = useRouter()
+    return(
+        &lt;>
+            &lt;h1>404 errorPage&lt;/h1>
+            &lt;a onClick={()=>router.push("/")}>Back to Home&lt;/a>
+        &lt;/>
+    )
+}
+export default errorPage;
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Globals CSS (External) in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">//under styles folder globals.css file which provided by nextjs bydefault
+// we need to import this file on root entry level file which is _app.js
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Component-Level CSS (Internal) in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">//under styles folder need to create [pageName].module.css
+// then first import on particular page
+import styles from '../styles/index.module.css'
+// then use css as component as below &lt;nav className={styles.nav}>&lt;/nav>
+// for multiple classes use &lt;button className={`${styles.btn} ${styles.btn-primary}`}>&lt;/button>
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    Inline-Level CSS (Inline) in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">&lt;h1 style={{color:"red", fontSize: "104px"}}>Hello World&lt;/h1>
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="cmnFunc">
+                            <div>
+                                <span class="text">
+                                    🔥 Deploy Next.JS App to Vercel for FREE in next js
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">https://vercel.com/
+//Signup with email
+//then login to vercel
+//run command for install vercel in your app
+//run this terminal ==>> npm i -g vercel
+//run this terminal ==>> vercel and enter
+
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
